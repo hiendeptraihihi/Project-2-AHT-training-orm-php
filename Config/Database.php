@@ -1,4 +1,6 @@
 <?php
+namespace Zino\Config;
+use PDO;
 
 class Database
 {

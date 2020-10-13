@@ -1,4 +1,9 @@
 <?php
+namespace Zino\Models;
+
+use Zino\Core\Model;
+use Zino\Config\Database;
+
 class Task extends Model
 {
     public function create($title, $description)

@@ -1,4 +1,5 @@
 <?php
+    namespace Zino;
 
 class Router
 {

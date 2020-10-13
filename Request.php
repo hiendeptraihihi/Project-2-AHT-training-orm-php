@@ -1,4 +1,6 @@
 <?php
+    namespace Zino;
+    
     class Request
     {
         public $url;

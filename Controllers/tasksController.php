@@ -1,9 +1,14 @@
 <?php
+namespace Zino\Controllers;
+
+use Zino\Core\Controller;
+use Zino\Models\Task;
+
 class tasksController extends Controller
 {
     function index()
     {
-        require(ROOT . 'Models/Task.php');
+        // require(ROOT . 'Models/Task.php');
 
         $tasks = new Task();
 
@@ -16,9 +21,9 @@ class tasksController extends Controller
     {
         if (isset($_POST["title"]))
         {
-            require(ROOT . 'Models/Task.php');
+            // require(ROOT . 'Models/Task.php');
 
-            $task= new Task();
+            $task= new Zino\Models\Task();
 
             if ($task->create($_POST["title"], $_POST["description"]))
             {
@@ -31,8 +36,8 @@ class tasksController extends Controller
 
     function edit($id)
     {
-        require(ROOT . 'Models/Task.php');
-        $task= new Task();
+        // require(ROOT . 'Models/Task.php');
+        $task= new Zino\Models\Task();
 
         $d["task"] = $task->showTask($id);
 
@@ -49,9 +54,9 @@ class tasksController extends Controller
 
     function delete($id)
     {
-        require(ROOT . 'Models/Task.php');
+        // require(ROOT . 'Models/Task.php');
 
-        $task = new Task();
+        $task = new Zino\Models\Task();
         if ($task->delete($id))
         {
             header("Location: " . WEBROOT . "tasks/index");
