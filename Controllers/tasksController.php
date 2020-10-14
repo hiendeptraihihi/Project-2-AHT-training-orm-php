@@ -1,18 +1,18 @@
 <?php
+
 namespace Zino\Controllers;
 
 use Zino\Core\Controller;
+use Zino\Repositories\TaskRepository;
 use Zino\Models\Task;
 
 class tasksController extends Controller
 {
     function index()
     {
-        // require(ROOT . 'Models/Task.php');
-
-        $tasks = new Task();
-
-        $d['tasks'] = $tasks->showAllTasks();
+        $task = new Task();
+        $taskRepo = new TaskRepository();
+        $d['tasks'] = $taskRepo->getAll();
         $this->set($d);
         $this->render("index");
     }
@@ -21,14 +21,16 @@ class tasksController extends Controller
     {
         if (isset($_POST["title"]))
         {
-            // require(ROOT . 'Models/Task.php');
+            $task= new Task();
+            $taskRepo = new TaskRepository();
 
-            $task= new Zino\Models\Task();
+            $task->setTitle($_POST['title']);
+            $task->setDescription($_POST['description']);
+            $task->setCreatedAt(date('Y-m-d H:i:s'));
+            $task->setUpdatedAt(date('Y-m-d H:i:s'));
 
-            if ($task->create($_POST["title"], $_POST["description"]))
-            {
-                header("Location: " . WEBROOT . "tasks/index");
-            }
+            $taskRepo->add($task);
+            header("Location: " . WEBROOT . "tasks/index");
         }
 
         $this->render("create");
@@ -36,8 +38,7 @@ class tasksController extends Controller
 
     function edit($id)
     {
-        // require(ROOT . 'Models/Task.php');
-        $task= new Zino\Models\Task();
+        $task= new Task();
 
         $d["task"] = $task->showTask($id);
 
@@ -56,7 +57,7 @@ class tasksController extends Controller
     {
         // require(ROOT . 'Models/Task.php');
 
-        $task = new Zino\Models\Task();
+        $task = new Task();
         if ($task->delete($id))
         {
             header("Location: " . WEBROOT . "tasks/index");

@@ -6,57 +6,52 @@ use Zino\Config\Database;
 
 class Task extends Model
 {
-    public function create($title, $description)
+    public $id;
+    public $title;
+    public $description;
+    public $created_at;
+    public $updated_at;
+
+    public function getId()
     {
-        $sql = "INSERT INTO tasks (title, description, created_at, updated_at) VALUES (:title, :description, :created_at, :updated_at)";
-
-        $req = Database::getBdd()->prepare($sql);
-
-        return $req->execute([
-            'title' => $title,
-            'description' => $description,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-
-        ]);
+        return $this->id;
+    }
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 
-    public function showTask($id)
+    public function setId($arr)
     {
-        $sql = "SELECT * FROM tasks WHERE id =" . $id;
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        return $req->fetch();
+        $this->id = $arr;
     }
-
-    public function showAllTasks()
+    public function setTitle($arr)
     {
-        $sql = "SELECT * FROM tasks";
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        return $req->fetchAll();
+        $this->title = $arr;
     }
-
-    public function edit($id, $title, $description)
+    public function setDescription($arr)
     {
-        $sql = "UPDATE tasks SET title = :title, description = :description , updated_at = :updated_at WHERE id = :id";
-
-        $req = Database::getBdd()->prepare($sql);
-
-        return $req->execute([
-            'id' => $id,
-            'title' => $title,
-            'description' => $description,
-            'updated_at' => date('Y-m-d H:i:s')
-
-        ]);
+        $this->description = $arr;
     }
-
-    public function delete($id)
+    public function setCreatedAt($arr)
     {
-        $sql = 'DELETE FROM tasks WHERE id = ?';
-        $req = Database::getBdd()->prepare($sql);
-        return $req->execute([$id]);
+        $this->created_at = $arr;
+    }
+    public function setUpdatedAt($arr)
+    {
+        $this->updated_at = $arr;
     }
 }
-?>
+

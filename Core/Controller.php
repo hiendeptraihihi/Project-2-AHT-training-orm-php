@@ -9,6 +9,7 @@
         function set($d)
         {
             $this->vars = array_merge($this->vars, $d);
+//            var_dump($d);
         }
 
         function render($filename)
