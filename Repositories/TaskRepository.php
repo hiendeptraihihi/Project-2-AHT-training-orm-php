@@ -13,19 +13,23 @@ class TaskRepository
         $taskResource->save($model);
     }
 
-    public function edit()
+    public function modify($model, $id)
     {
-
+        $taskResource = new TaskResourceModel();
+        $taskResource->save($model, $id);
+        return true;
     }
 
-    public function delete()
+    public function delete($id)
     {
-        
+        $taskResource = new TaskResourceModel();
+        $taskResource->remove($id);
     }
 
-    public function get()
+    public function get($id)
     {
-        
+        $taskResource = new TaskResourceModel();
+        return $taskResource->getOne($id);
     }
 
     public function getAll()

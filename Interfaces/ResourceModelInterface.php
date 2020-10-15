@@ -7,6 +7,6 @@ interface ResourceModelInterface
     public function _init($tablename, $id, $model);
 
     public function save($model);
-//
-//    public function delete();
+
+    public function remove($id);
 }

@@ -3,6 +3,7 @@
 namespace Zino\Controllers;
 
 use Zino\Core\Controller;
+use Zino\Core\ResourceModel;
 use Zino\Repositories\TaskRepository;
 use Zino\Models\Task;
 
@@ -39,14 +40,18 @@ class tasksController extends Controller
     function edit($id)
     {
         $task= new Task();
+        $taskRepo = new TaskRepository();
 
-        $d["task"] = $task->showTask($id);
+        $d["task"] = $taskRepo->get($id);
 
         if (isset($_POST["title"]))
         {
-            if ($task->edit($id, $_POST["title"], $_POST["description"]))
+            $task->title = $_POST['title'];
+            $task->description = $_POST['description'];
+
+            if ($taskRepo->modify($task, $id))
             {
-                header("Location: " . WEBROOT . "tasks/index");
+                header("location: " . WEBROOT . "tasks/index");
             }
         }
         $this->set($d);
@@ -55,13 +60,9 @@ class tasksController extends Controller
 
     function delete($id)
     {
-        // require(ROOT . 'Models/Task.php');
-
-        $task = new Task();
-        if ($task->delete($id))
-        {
-            header("Location: " . WEBROOT . "tasks/index");
-        }
+        $taskRepo = new TaskRepository();
+        $taskRepo->delete($id);
+        header("location: " . WEBROOT . "tasks/index");
     }
 }
 ?>
