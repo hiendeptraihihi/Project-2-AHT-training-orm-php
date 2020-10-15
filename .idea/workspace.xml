@@ -10,15 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93ac342-66cb-49f3-8d9a-59a21e512379" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/tasksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/tasksController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/ResourceModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/ResourceModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/ResourceModelInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/ResourceModelInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/TaskRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Tasks/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Tasks/edit.php" afterDir="false" />
-    </list>
+    <list default="true" id="c93ac342-66cb-49f3-8d9a-59a21e512379" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
