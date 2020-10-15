@@ -19,6 +19,7 @@ class ResourceModel implements ResourceModelInterface
     }
     public function save($model, $id=null)
     {
+        if (property_exists($model, 'updated_at')) $model->updated_at = date('Y-m-d H:i:s');
         $arr = get_object_vars($model);
         unset($arr[$this->id]);
         if ($id) {

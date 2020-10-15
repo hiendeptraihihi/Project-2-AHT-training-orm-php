@@ -25,10 +25,8 @@ class tasksController extends Controller
             $task= new Task();
             $taskRepo = new TaskRepository();
 
-            $task->setTitle($_POST['title']);
-            $task->setDescription($_POST['description']);
-            $task->setCreatedAt(date('Y-m-d H:i:s'));
-            $task->setUpdatedAt(date('Y-m-d H:i:s'));
+            $task->title = $_POST['title'];
+            $task->description = $_POST['description'];
 
             $taskRepo->add($task);
             header("Location: " . WEBROOT . "tasks/index");
@@ -43,6 +41,7 @@ class tasksController extends Controller
         $taskRepo = new TaskRepository();
 
         $d["task"] = $taskRepo->get($id);
+        $task = $taskRepo->get($id);
 
         if (isset($_POST["title"]))
         {
